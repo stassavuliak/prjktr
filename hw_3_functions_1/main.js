@@ -4,13 +4,20 @@
 */
 
 console.log(addThemAll(1,2,3)); // 6*
-console.log(addThemAll(1,2,3,4)); // 10*
-console.log(addThemAll(5,5,10)); // 20*
+// console.log(addThemAll(1,2,3,4)); // 10*
+// console.log(addThemAll(5,5,10)); // 20*
+
+function checkIsNumber (number) {
+  return typeof number === 'number' && !isNaN(number);
+}
 
 function addThemAll (...numbers) {
   const sumOfNumbers = numbers.reduce((acc, current) => {
-    return acc + current;
-  });
+    if (checkIsNumber(current)) {
+      return acc + current;
+    }
+    return acc;
+  }, 0);
   return sumOfNumbers;
 }
  
@@ -25,11 +32,8 @@ console.log(multiply(2)(-2)); // -4*
 console.log(multiply(4)(3)); // 12*
 
 function multiply(a) {
-  if (typeof a !== 'number' || isNaN(a) ) {
-    return 'Invalid param type!';
-  }
   return function inner(b) {
-    if (typeof b !== 'number' || isNaN(b) ) {
+    if (!checkIsNumber(a) || !checkIsNumber(b)) {
       return 'Invalid param type!';
     }
     return a * b;
@@ -38,6 +42,7 @@ function multiply(a) {
 }
 
 console.log(multiply(2)(3));
+
 
 
 /*
@@ -77,28 +82,38 @@ const movies = [
 ];
 
 
+function checkIsPropertyValid(property) {
+  const validKeys = Object.keys(movies[0]);
 
-  
-// console.log(movies.sort(byProperty('releaseYear', '<'))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого*
-// console.log(movies.sort(byProperty('runningTimeInMinutes', '<'))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого*
-console.log(byProperty('runningTimeInMinutes', '<')); // виведе масив фільмів посортованих по назві, в алфавітному порядку*
+  return validKeys.includes(property);
+}
   
 function byProperty(property, direction) {
-  if (typeof property !== 'string' || !property || typeof direction !== 'string' || !direction) {
-    return 'Invalid param type!';
+  if (!checkIsPropertyValid(property)) {
+    return (a, b) => 0;
+  }
+
+  if (!['>', '<'].includes(direction)) {
+    return (a, b) => 0;
   }
   
-  movies.sort((a, b) => {
+  return (a, b) => {
     if (direction === '>') {
       return a[property] > b[property] ? 1 : -1;
     } else if (direction === '<') {
       return a[property] < b[property] ? 1 : -1;
     }
-  });
+  };
 
 }
 
-console.log(movies);
+
+
+// console.log(movies.sort(byProperty('releaseYear', '<'))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого*
+// console.log(movies.sort(byProperty('runningTimeInMinutes', '<'))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого*
+// console.log(movies.sort(byProperty('runningTimeInMinutes', '<'))); // виведе масив фільмів посортованих по назві, в алфавітному порядку*
+console.log(movies.sort(byProperty('movieName', ''))); // виведе масив фільмів посортованих по назві, в алфавітному порядку*
+
 
 
 

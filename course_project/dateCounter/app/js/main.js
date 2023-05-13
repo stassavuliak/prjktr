@@ -1,22 +1,29 @@
 const startInput = document.getElementById('start');
+const startInputValue = startInput.value;
+
 const endInput = document.getElementById('end');
+const endInputValue = endInput.value;
+
 const selectTimeInterval = document.getElementById('timeInterval');
-const dimension = document.querySelector('#dimension');
+
+const dimensionSelect = document.querySelector('#dimension');
+let dimensionSelectValue = dimensionSelect.value;
+
 const calculateButton = document.querySelector('#btn');
 
 // startInput.addEventListener('change', changeInput);
-// endInput.addEventListener('change', changeInput);
+// endInput.addEventListener('change', changeInp ut);
 calculateButton.addEventListener('click', durationBetweenDates);
 
-const values = {
-  start: '',
-  end: '',
-};
+// const values = {
+//   start: '',
+//   end: '',
+// };
 
-const timeInterval = {
-  week: 'week',
-  month: 'month',
-};
+// const timeInterval = {
+//   week: 'week',
+//   month: 'month',
+// };
 
 const DIMENSION_VALUES = {
   days: 1000 * 60 * 60 * 24,
@@ -66,7 +73,7 @@ function durationBetweenDates (startDate, finalDate, dimension) {
  
 }
 
-durationBetweenDates(startInput.value, endInput.value, dimension.value);
+durationBetweenDates(startInput.value, endInput.value, dimensionSelectValue);
 
 
 

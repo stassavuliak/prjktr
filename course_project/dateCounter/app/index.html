@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>Time measure</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="dates">
+      <div class="dates__counter">
+        <h1>Порахуй проміжок часу між датами, що тебе цікавлять</h1>
+        <div class="dates__wrapper-box">
+          <div class="dates__wrapper">
+            <div class="dates__input">
+              <h3>Дата початку</h3>
+              <input type="date" name="start" id="start">
+            </div>
+    
+            <div class="dates__input">
+              <h3>Дата кінця</h3>
+              <input type="date" name="end" id="end">
+            </div>
+          </div>
+  
+          <div class="dates__preset">
+            <h3>Пресети:</h3>
+  
+            <div class="dates__preset-wrap">
+              <label class="dates__preset-item">
+                <span>Тиждень</span>
+                <input type="radio" name="dateRange" id="week">
+              </label>
+              <!-- item -->
+  
+              <label class="dates__preset-item">
+                <span>Місяць</span>
+                <input type="radio" name="dateRange" id="month">
+              </label>
+              <!-- item -->
+            </div>
+          </div>
+          <!-- presets -->
+        </div>
+  
+  
+        <div class="dates__result">
+          <h2>Опції</h2>
+          <div class="dates__options-wrap">
+            <div class="dates__options">  
+              <div class="dates__options-item">
+                <h3>Дні:</h3>
+                <select name="dayOptions" id="dayOptions">
+                  <option value="Всі дні">Всі дні</option>
+                  <option value="Будні дні">Будні дні</option>
+                  <option value="Вихідні дні">Вихідні дні</option>
+                </select>
+              </div>
+              <!-- item -->
+    
+              <div class="dates__options-item">
+                <h3>Розмірність:</h3>
+                <select name="dimension" id="dimension">
+                  <option value="days">Порахувати кількість днів</option>
+                  <option value="hours">Порахувати кількість годин</option>
+                  <option value="minutes">Порахувати кількість хвилин</option>
+                  <option value="seconds">Порахувати кількість секунд</option>
+                </select>
+              </div>
+              <!-- item -->
+    
+            </div>
+            <!-- options -->
+  
+            <button id="btn">Розрахувати</button>
+          </div>
+   
+  
+          <div class="dates__result-wrap">
+            <h2>Твій результат</h2>
+            <input type="text" class="dates__result-input">
+            <!-- result input -->
+          </div>
+        </div>
+  
+      </div>
+      <!-- counter -->
+  
+      <div class="dates__list">
+        <h2>Останні результати розрахунків</h2>
+        <table>
+          <tr>
+            <th>Стартова дата</th>
+            <th>Кінцева дата</th>
+            <th>Результат виміру</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+          </tr>
+        </table>
+        <!-- table -->
+      </div>
+      <!-- dates list -->
+    </div>
+  </div>
+
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
